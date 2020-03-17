@@ -12,7 +12,7 @@
             <br>
             <Authenticate/>
             <br>
-            <Videos v-cloak v-if="false"/>
+            <Videos v-cloak v-if="true"/>
         </v-content>
     </v-app>
 </template>
@@ -20,6 +20,9 @@
 <script>
     import Videos from './components/Videos';
     import Authenticate from './components/Authenticate';
+    import axios from "axios";
+
+    axios.defaults.baseURL = 'https://sandbox.api.video';
 
     export default {
         name: 'App',

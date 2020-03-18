@@ -10,7 +10,7 @@
                         <v-list-item-group>
                             <v-list-item v-for="(video, index) in videos" :key="index">
                                 <v-list-item-content>
-                                    <v-list-item-title v-html="video">{{video.title}}</v-list-item-title>
+                                    <v-list-item-title>{{video.title}}</v-list-item-title>
                                 </v-list-item-content>
                             </v-list-item>
                         </v-list-item-group>
@@ -31,11 +31,9 @@
             };
         },
         created: function () {
-            // eslint-disable-next-line no-global-assign
-            self = this;
-            this.$root.$on('authorized', function () {
-                axios.get("/videos").then(function (response) {
-                    self.videos = response.data.data;
+            this.$root.$on('authorized', () => {
+                axios.get("/videos").then(response => {
+                    this.videos = response.data.data;
                 });
             });
         }

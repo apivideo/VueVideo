@@ -29,14 +29,13 @@ export default {
   },
   methods: {
     submit: function() {
-      self = this;
       axios
         .post("https://sandbox.api.video/auth/api-key", {
-          apiKey: self.apiKey
+          apiKey: this.apiKey
         })
-        .then(function(response) {
-          self.accessToken = response.data.access_token;
-          self.refreshToken = response.data.refresh_token;
+        .then(response => {
+          this.accessToken = response.data.access_token;
+          this.refreshToken = response.data.refresh_token;
         });
     }
   }
